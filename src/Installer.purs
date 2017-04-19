@@ -1,4 +1,9 @@
-module Main where
+module Installer (
+    packageDir
+  , vendorDir
+  , executablePath
+  , install
+  ) where
 
 import Prelude
 import Data.Newtype
@@ -45,9 +50,22 @@ getDownloadUrl v o = wrap do
     Win32 -> "win64.tar.gz"
     _ -> "linux64.tar.gz"
 
+foreign import packageDir :: FilePath
 foreign import runRequestImpl :: ∀ w eff. String -> Eff eff (Readable w eff)
 foreign import tar2fs :: ∀ w eff. String -> Eff eff (Duplex eff)
 foreign import gzipMaybe :: ∀ w eff. Eff eff (Duplex eff)
+
+vendorDir :: FilePath
+vendorDir = Path.concat [packageDir, "vendor"]
+
+executablePath :: FilePath
+executablePath = Path.concat [
+    vendorDir
+  , "purescript"
+  , case Process.platform of
+      Win32 -> "purs.exe"
+      _      -> "purs"
+  ]
 
 pipes
   :: ∀ r w eff
@@ -72,7 +90,6 @@ download dir platform version =
         Stream.onError stream errback
         Stream.onFinish stream $ callback unit
 
-main :: Eff _ Unit
-main = void $ launchAff do
-  dir <- download "foo" Process.platform (Version "0.11.4")
-  log dir
+install :: Eff _ Unit
+install = void $ launchAff do
+  download vendorDir Process.platform (Version "0.11.4")

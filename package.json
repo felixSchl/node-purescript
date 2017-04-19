@@ -7,7 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "shx mkdir -p dist && pulp build --to dist/index.purs.js --skip-entry-point --optimise -m Installer && shx echo \"module.exports = PS;\" >> dist/index.purs.js",
+    "prebuild": "shx rm -rf dist",
+    "deps": "bower install",
+    "clean": "git stash && git clean -fdX",
+    "prerelease": "npm run -s clean && npm install && npm run -s deps && npm test",
+    "release": "npm version",
+    "postrelease": "git push --tags && npm publish",
+    "postinstall": "node -e \"require('./lib/installer').install()\""
   },
   "repository": {
     "type": "git",
@@ -23,5 +30,8 @@
     "gunzip-maybe": "^1.4.0",
     "tar-fs": "^1.15.2",
     "tar-stream": "^1.5.2"
+  },
+  "devDependencies": {
+    "shx": "^0.2.2"
   }
 }
