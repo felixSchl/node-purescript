@@ -92,4 +92,5 @@ download dir platform version =
 
 install :: Eff _ Unit
 install = void $ launchAff do
+  -- TODO: move the version number into package.json
   download vendorDir Process.platform (Version "0.11.4")
