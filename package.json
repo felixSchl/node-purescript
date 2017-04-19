@@ -14,7 +14,7 @@
     "prerelease": "npm run -s clean && npm install && npm run -s deps && npm test",
     "release": "npm version",
     "postrelease": "git push --tags && npm publish",
-    "postinstall": "node -e \"require('./lib/installer').install()\""
+    "postinstall": "node install.js"
   },
   "repository": {
     "type": "git",
