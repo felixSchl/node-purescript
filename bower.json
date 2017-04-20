@@ -9,16 +9,15 @@
   "dependencies": {
     "purescript-prelude": "^3.0.0",
     "purescript-console": "^3.0.0",
-    "purescript-node-fs-aff": "^4.0.0",
-    "purescript-node-http": "^4.0.0",
     "purescript-node-process": "^4.0.0",
     "purescript-aff": "^3.0.0",
-    "purescript-affjax": "^4.0.0",
     "purescript-transformers": "^3.2.0",
-    "purescript-node-url": "^3.0.0",
-    "purescript-lazy": "^3.0.0"
+    "purescript-node-streams": "git@github.com:felixschl/purescript-node-streams#d34d63966aa8ceef42a8c708542198e7d7724222"
   },
   "devDependencies": {
     "purescript-psci-support": "^3.0.0"
+  },
+  "resolutions": {
+    "purescript-node-streams": "d34d63966aa8ceef42a8c708542198e7d7724222"
   }
 }

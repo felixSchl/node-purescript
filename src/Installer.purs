@@ -8,28 +8,15 @@ module Installer (
 import Prelude
 import Data.Newtype
 import Data.Function
-import Data.Int as Int
 import Data.Maybe (Maybe(..))
 import Data.Either (Either(..))
-import Data.StrMap as StrMap
-import Data.Lazy (defer)
-import Partial.Unsafe (unsafePartial)
-import Control.Bind ((=<<))
-import Control.Monad.Eff.Exception (throwException, error)
-import Control.Monad.Error.Class (throwError)
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Aff (Aff, makeAff, launchAff)
-import Control.Monad.Aff.AVar
-import Control.Monad.Aff.Console (CONSOLE, log)
-import Control.Monad.Eff.Console as Eff
-import Node.HTTP.Client as HTTP
 import Node.Path (FilePath)
 import Node.Path as Path
-import Node.URL as URL
 import Node.Stream (Readable, Writable, Duplex, pipe)
 import Node.Stream as Stream
-import Node.FS.Aff
 import Node.Platform (Platform(..))
 import Node.Process as Process
 
@@ -64,7 +51,7 @@ executablePath = Path.concat [
   , "purescript"
   , case Process.platform of
       Win32 -> "purs.exe"
-      _      -> "purs"
+      _     -> "purs"
   ]
 
 pipes

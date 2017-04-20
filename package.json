@@ -1,10 +1,13 @@
 {
   "name": "purescript-node",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
+  },
+  "bin": {
+    "purs": "bin/purs.js"
   },
   "scripts": {
     "build": "shx mkdir -p dist && pulp build --to dist/index.purs.js --skip-entry-point --optimise -m Installer && shx echo \"module.exports = PS;\" >> dist/index.purs.js",
@@ -14,7 +17,10 @@
     "prerelease": "npm run -s clean && npm install && npm run -s deps && npm test",
     "release": "npm version",
     "postrelease": "git push --tags && npm publish",
-    "postinstall": "node install.js"
+    "postinstall": "node install.js",
+    "pretest": "npm run build",
+    "test": "shx echo OK",
+    "psvm": "psvm"
   },
   "repository": {
     "type": "git",
@@ -28,10 +34,12 @@
   "homepage": "https://github.com/felixschl/purescript-node#readme",
   "dependencies": {
     "gunzip-maybe": "^1.4.0",
-    "tar-fs": "^1.15.2",
-    "tar-stream": "^1.5.2"
+    "request": "^2.81.0",
+    "tar-fs": "^1.15.2"
   },
   "devDependencies": {
+    "bower": "^1.8.0",
+    "pulp": "^11.0.0",
     "shx": "^0.2.2"
   }
 }

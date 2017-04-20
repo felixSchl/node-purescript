@@ -1,0 +1,25 @@
+language: node_js
+dist: trusty
+sudo: true
+node_js:
+  - 4
+
+before_script:
+  - export ORIG_PATH=$PATH
+  - export PATH=~/.psvm/current/bin:$PATH
+
+install:
+  - npm i -g psvm
+  - npm i
+  - npm run deps
+  - npm run psvm install v0.11.4
+  - npm run psvm use v0.11.4
+
+script:
+  - npm test
+  - PATH=$ORIG_PATH;
+    pkg=$(echo "$PWD/$(npm pack)") &&
+      cd fixture &&
+      npm i "$pkg" &&
+      ver=$(npm run purs -- --version) &&
+      [[ "$ver" == '0.11.4' ]]

@@ -1,0 +1,23 @@
+environment:
+  nodejs_version: 4
+
+platform:
+  - x64
+
+cache:
+  - '%LOCALAPPDATA%\bower\cache\packages -> bower.json'
+
+install:
+  - ps: Install-Product node $env:nodejs_version x64
+  - npm i -g felixSchl/psvm-js
+  - npm i
+  - npm run deps
+  - npm run psvm install v0.11.4
+  - npm run psvm use v0.11.4
+
+test_script:
+  - set PATH=%USERPROFILE%\.psvm\current\bin;%PATH%
+  - dir %USERPROFILE%\.psvm\current\bin
+  - npm test
+
+build: off
