@@ -1,13 +1,13 @@
-var request = require('request')
+var got = require('got')
 var tar = require('tar-fs')
 var gunzip = require('gunzip-maybe')
 var path = require('path')
 
 exports.packageDir = path.join(__dirname, '..')
 
-exports.runRequestImpl = function(url) {
+exports.createDownloadStream = function(url) {
   return function() {
-    return request(url)
+    return got.stream(url)
   }
 }
 

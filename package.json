@@ -33,8 +33,8 @@
   },
   "homepage": "https://github.com/felixschl/node-purescript#readme",
   "dependencies": {
+    "got": "^5",
     "gunzip-maybe": "^1.4.0",
-    "request": "^2.81.0",
     "tar-fs": "^1.15.2"
   },
   "devDependencies": {

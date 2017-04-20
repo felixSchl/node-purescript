@@ -38,7 +38,7 @@ getDownloadUrl v o = wrap do
     _ -> "linux64.tar.gz"
 
 foreign import packageDir :: FilePath
-foreign import runRequestImpl :: ∀ w eff. String -> Eff eff (Readable w eff)
+foreign import createDownloadStream :: ∀ w eff. String -> Eff eff (Readable w eff)
 foreign import tar2fs :: ∀ w eff. String -> Eff eff (Duplex eff)
 foreign import gzipMaybe :: ∀ w eff. Eff eff (Duplex eff)
 
@@ -71,7 +71,7 @@ download dir platform version =
   let url = unwrap $ getDownloadUrl version platform
    in Path.concat [dir, "purescript"] <$ makeAff \errback callback ->
       liftEff do
-        stream <- runRequestImpl url
+        stream <- createDownloadStream url
           >|> gzipMaybe
           >|> tar2fs dir
         Stream.onError stream errback
