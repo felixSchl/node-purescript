@@ -1,0 +1,27 @@
+{
+  "name": "purescript-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixschl/purescript-node.git"
+  },
+  "author": "Felix Schlitter <felixschlitter@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felixschl/purescript-node/issues"
+  },
+  "homepage": "https://github.com/felixschl/purescript-node#readme",
+  "dependencies": {
+    "gunzip-maybe": "^1.4.0",
+    "tar-fs": "^1.15.2",
+    "tar-stream": "^1.5.2"
+  }
+}
