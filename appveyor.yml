@@ -9,7 +9,7 @@ cache:
 
 install:
   - ps: Install-Product node $env:nodejs_version x64
-  - npm i -g felixSchl/psvm-js
+  - npm i -g psvm
   - npm i
   - npm run deps
   - npm run psvm install v0.11.4
