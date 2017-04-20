@@ -1,5 +1,5 @@
 {
-  "name": "purescript-node",
+  "name": "node-purescript",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -24,14 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felixschl/purescript-node.git"
+    "url": "git+https://github.com/felixschl/node-purescript.git"
   },
   "author": "Felix Schlitter <felixschlitter@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/felixschl/purescript-node/issues"
+    "url": "https://github.com/felixschl/node-purescript/issues"
   },
-  "homepage": "https://github.com/felixschl/purescript-node#readme",
+  "homepage": "https://github.com/felixschl/node-purescript#readme",
   "dependencies": {
     "gunzip-maybe": "^1.4.0",
     "request": "^2.81.0",
